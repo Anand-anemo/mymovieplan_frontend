@@ -1,0 +1,107 @@
+<mat-card>
+    <h1 class="ml10">Add Movies</h1>
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8 offset-md-1 mr10 ml10">
+                        <form (ngSubmit)="addmovie()">
+                            <mat-form-field class="w80">
+                                <mat-label>Movie Name</mat-label>
+                                <input  [(ngModel)]="movies.movieName"
+                                matInput type="text" placeholder="Enter Name" name="name" />
+                            </mat-form-field>
+
+                            <mat-form-field class="w80 mt10">
+                                <mat-label>Language</mat-label>
+                                <input [(ngModel)]="movies.language"
+                                matInput type="text" placeholder="Movie Language" name="language" />
+                            </mat-form-field>
+
+                            <mat-form-field class="w80 mt10" appearance="outline">
+                                <mat-label>About</mat-label>
+                                <textarea [(ngModel)]="movies.summary"
+                                type="text" name="summary" placeholder="summary" matInput rows="5"></textarea>
+                            </mat-form-field>
+
+                            <mat-form-field class="w80 mt10">
+                                <mat-label>Image Url</mat-label>
+                                <input [(ngModel)]="movies.imageurl"
+                                matInput type="text" placeholder="Movie Image url" name="imageurl" />
+                            </mat-form-field>
+
+                            
+                               
+                            
+
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label>
+                                <input [(ngModel)]="movies.release" name="release"
+                                 matInput [matDatepicker]="picker">
+                                <mat-hint>MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                             <!-- <mat-form-field>
+                                <mat-label>Choose a date</mat-label>
+                                <input
+                                type="date" 
+                                [(ngModel)]="movies.release" name="release"
+                                 matInput >
+                                <mat-hint>MM/DD/YYYY</mat-hint>
+
+                            </mat-form-field>
+                             -->
+
+                            <mat-slide-toggle [(ngModel)]="movies.active" class="ml50">
+                                Status
+
+                            </mat-slide-toggle> <br>
+
+                            <mat-form-field appearance="fill" class="mt20">
+                                <mat-label>Genre</mat-label>
+                                <mat-select name="genre" [(ngModel)]="movies.genres.gid">
+                                    <mat-option *ngFor="let g of genres" [value]="g.gid">
+                                        {{g.genreName}}
+
+                                    </mat-option>
+
+                                </mat-select>
+
+                            </mat-form-field>
+
+                            <div class="container text-center">
+                                <button type="submit" mat-raised-button color="accent" routerLink="/addmovietotheatre">Add Movie</button>
+                            </div>
+
+                           
+                        </form>
+
+                        <div class="container place mb20">
+                            <button  mat-raised-button color="accent" routerLink="/admin-dashboard/addmovietotheatre">Next</button>
+                        </div>
+
+
+                    </div>
+                    <!-- <div class="col-md-4">
+
+                        <mat-checkbox matInput *ngFor="let t of theatre"  [value]="t.tid">
+                            {{t.theatreName}}
+                        </mat-checkbox>
+                        <mat-checkbox>checked</mat-checkbox>
+                        *Select only one theatre at a time
+                        <div *ngFor="let t of theatre" class="boxsize" class="mt20">
+                            <input type="checkbox" [value]="t.tid" (change)="getTheatreId($event , t.tid)"  />
+                            {{t.theatreName | uppercase}}
+                        </div>
+
+
+                    </div>
+                    -->
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</mat-card>

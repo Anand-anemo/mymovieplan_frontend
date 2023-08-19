@@ -1,0 +1,13 @@
+<mat-card>
+    <mat-list>
+        <div mat-subheader><h1><b>All Genres</b></h1></div>
+        <mat-list-item *ngFor="let c of genres">
+            <div mat-line>{{c.genreName}}</div>
+            <mat-divider></mat-divider>
+
+        </mat-list-item>
+    </mat-list>
+    <div class="container text-center mt20 mb10">
+        <button routerLink="/admin-dashboard/addgenre" mat-raised-button  color="accent" >Add new Genre</button>
+    </div>
+</mat-card>

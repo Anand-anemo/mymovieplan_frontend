@@ -1,0 +1,31 @@
+<mat-card class="mt10 w50" *ngFor="let t of theatre" >
+    <mat-card-header>
+        <mat-card-title>
+           Theatre Name : {{t.theatreName}}
+        </mat-card-title>
+        <mat-card-subtitle>
+           Address: {{t.address}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+          Location:  {{t.location}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+           City: {{t.city}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+           Contact: {{t.phoneno}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <!-- <button mat-flat-button color="accent" >Update</button> -->
+      <button mat-flat-button color="warn" class="ml10" (click)="deleteTheatre(t.tid)">Delete</button>
+
+
+    </mat-card-actions>
+
+    
+
+</mat-card>
+<div class="container  mt50 ">
+   <button routerLink="/admin-dashboard/addtheatre" mat-raised-button color="accent" class="ml">Add Theatre</button>
+</div>

@@ -10,6 +10,12 @@ import { AdminGuard } from './services/admin.guard';
 import { UserGuard } from './services/user.guard';
 import { ProfileComponent } from './forms/profile/profile.component';
 import { WelcomeComponent } from './forms/admin/welcome/welcome.component';
+import { ViewGenresComponent } from './forms/admin/view-genres/view-genres.component';
+import { AddGenresComponent } from './forms/admin/add-genres/add-genres.component';
+import { ViewTheaterComponent } from './forms/admin/view-theater/view-theater.component';
+import { AddTheatreComponent } from './forms/admin/add-theatre/add-theatre.component';
+import { AddMoviesComponent } from './forms/admin/add-movies/add-movies.component';
+import { AddmovietotheatreComponent } from './forms/admin/addmovietotheatre/addmovietotheatre.component';
 
 const routes: Routes = [
   {
@@ -35,6 +41,31 @@ const routes: Routes = [
       {
         path:'profile',
         component:ProfileComponent
+      },
+      {
+        path:'viewgenres',
+        component:ViewGenresComponent
+
+      },
+      {
+        path:'addgenre',
+        component:AddGenresComponent
+      },
+      {
+        path:'viewtheater',
+        component:ViewTheaterComponent
+      },
+      {
+        path:'addtheatre',
+        component:AddTheatreComponent
+      },
+      {
+        path:'addmovies' , 
+        component:AddMoviesComponent
+      },
+      {
+        path:'addmovietotheatre',
+        component:AddmovietotheatreComponent
       }
     ]
   },

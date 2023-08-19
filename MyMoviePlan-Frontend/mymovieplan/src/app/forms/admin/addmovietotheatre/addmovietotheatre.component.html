@@ -1,0 +1,36 @@
+<mat-card>
+    <h1>Add Movie To Theatre
+
+    </h1><h5>(*select moviename and then check the movietheatres)</h5>
+    <div class="row">
+        <div class="container col-md-6">
+            <mat-form-field appearance="fill" class="mt20">
+                <mat-label>Movies</mat-label>
+                <mat-select name="movies" [(ngModel)]="mid">
+                    <mat-option *ngFor="let m of movies" [value]="m.movieid">
+                        {{m.movieName}}
+    
+                    </mat-option>
+    
+                </mat-select>
+    
+            </mat-form-field>
+            
+        </div>
+        <div class="col-md-6">
+            
+            
+            
+            <div *ngFor="let t of theatre" class="boxsize" class="mt20">
+                <input type="checkbox" [value]="t.tid" (change)="getTheatreId($event , t.tid)"  />
+                {{t.theatreName | uppercase}}
+            </div>
+        </div>
+
+        <div class="container text-center mt20">
+            <button  mat-raised-button color="accent" (click)="addmovietotheatre(mid)">Add</button>
+        </div>
+
+    </div>
+    
+</mat-card>
