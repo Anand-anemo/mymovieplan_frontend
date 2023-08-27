@@ -3,7 +3,7 @@
         <div class="col-md-11 offset-md-1 " >
             <form (ngSubmit)="addtheatre()">
 
-                <mat-form-field class="w40">
+                <mat-form-field class="w70">
                     <mat-label>Theatre Name</mat-label>
                     <input 
                     [(ngModel)]="theatre.theatreName"
@@ -13,32 +13,17 @@
                     palceholder="Enter name">
                 </mat-form-field>
 
-                <!-- <mat-form-field class="w30 ml50">
-                    <mat-label>Ticket Type</mat-label>
-                   <mat-select name="seattype"   [(ngModel)]="theatre.ticket.ticketType">
-                    <mat-option value="Recliner">Recliners</mat-option>
-                    <mat-option value="Gold">Gold</mat-option>
-                    <mat-option value="Silver">Silver</mat-option>
-                </mat-select>
-                </mat-form-field> -->
-
-                <mat-form-field class="w30 ml50">
-                    <mat-label>Ticket Type</mat-label>
-
-                    <ng-container *ngFor="let t of theatre.ticket">
-                        <mat-select name="seattype"   [(ngModel)]="t.ticketType">
-                            <mat-option value="Recliner">Recliners</mat-option>
-                            <mat-option value="Gold">Gold</mat-option>
-                            <mat-option value="Silver">Silver</mat-option>
-                        </mat-select>
-                    </ng-container>
-
-                 
+                <mat-form-field class="w70">
+                    <mat-label>Theatre Location</mat-label>
+                    <input 
+                    [(ngModel)]="theatre.location"
+                    type="text"
+                    matInput
+                    name="location"
+                    palceholder="Enter location">
                 </mat-form-field>
 
-
-
-                <mat-form-field class="w40" appearance="outline">
+                <mat-form-field class="w70" appearance="outline">
                     <mat-label>Address</mat-label>
                     <textarea 
                     [(ngModel)]="theatre.address"
@@ -52,6 +37,63 @@
                     ></textarea>
                 </mat-form-field>
 
+                <mat-form-field class="w70">
+                    <mat-label>City</mat-label>
+                    <input 
+                    [(ngModel)]="theatre.city"
+                    type="text"
+                    matInput
+                    name="city"
+                    palceholder="Enter city">
+                </mat-form-field>
+
+                <mat-form-field class="w70">
+                    <mat-label>Seats Capacity</mat-label>
+                    <input 
+                    [(ngModel)]="theatre.seatCapacity"
+                    type="number"
+                    matInput
+                    name="seatsCapacity"
+                    palceholder="Enter number">
+                </mat-form-field>
+
+                <mat-form-field class="w70">
+                    <mat-label>Phone no</mat-label>
+                    <input 
+                    [(ngModel)]="theatre.phoneno"
+                    type="number"
+                    matInput
+                    name="phoneno"
+                    palceholder="Enter phone no">
+                </mat-form-field>
+
+                <!-- <mat-form-field class="w30 ml50">
+                    <mat-label>Ticket Type</mat-label>
+                   <mat-select name="seattype"   [(ngModel)]="theatre.ticket.ticketType">
+                    <mat-option value="Recliner">Recliners</mat-option>
+                    <mat-option value="Gold">Gold</mat-option>
+                    <mat-option value="Silver">Silver</mat-option>
+                </mat-select>
+                </mat-form-field> -->
+
+                <!-- <mat-form-field class="w30 ml50">
+                    <mat-label>Ticket Type</mat-label>
+
+                    <ng-container *ngFor="let t of theatre.ticket">
+                        <mat-select name="seattype"   [(ngModel)]="t.ticketType">
+                            <mat-option value="Recliner">Recliners</mat-option>
+                            <mat-option value="Gold">Gold</mat-option>
+                            <mat-option value="Silver">Silver</mat-option>
+                        </mat-select>
+                    </ng-container>
+
+                 
+                </mat-form-field> -->
+
+
+
+                
+
                 <!-- <mat-form-field class="w30 ml50">
                     <mat-label>Ticket Price</mat-label>
                     <input
@@ -62,7 +104,7 @@
                     palceholder="Enter price">
                 </mat-form-field> -->
 
-                <mat-form-field class="w30 ml50">
+                <!-- <mat-form-field class="w30 ml50">
                     <mat-label>Ticket Price</mat-label>
                    <ng-container *ngFor="let t of theatre.ticket">
                     <input 
@@ -72,29 +114,13 @@
                     name="ticketprice"
                     palceholder="Enter price">
                    </ng-container>
-                </mat-form-field>
-
-                <mat-form-field class="w40">
-                    <mat-label>Theatre Location</mat-label>
-                    <input 
-                    [(ngModel)]="theatre.location"
-                    type="text"
-                    matInput
-                    name="location"
-                    palceholder="Enter location">
-                </mat-form-field>
-
-                <!-- <mat-form-field class="w30 ml50">
-                    <mat-label>Number of Seats</mat-label>
-                    <input 
-                    [(ngModel)]="theatre.ticket.ticketSeats"
-                    type="text"
-                    matInput
-                    name="ticketSeats"
-                    palceholder="Enter seats">
                 </mat-form-field> -->
 
-                <mat-form-field class="w30 ml50">
+                
+
+                
+
+                <!-- <mat-form-field class="w30 ml50">
                     <mat-label>Number of Seats</mat-label>
                     <ng-container *ngFor="let t of theatre.ticket">
                         <input 
@@ -104,11 +130,11 @@
                     name="ticketSeats"
                     palceholder="Enter seats">
                     </ng-container>
-                </mat-form-field>
+                </mat-form-field> -->
 
 
 
-                <mat-form-field class="w40">
+                <!-- <mat-form-field class="w40">
                     <mat-label>City</mat-label>
                     <input 
                     [(ngModel)]="theatre.city"
@@ -116,20 +142,12 @@
                     matInput
                     name="city"
                     palceholder="Enter city">
-                </mat-form-field><br>
+                </mat-form-field><br> -->
 
-                <mat-form-field class="w40">
-                    <mat-label>Phone no</mat-label>
-                    <input 
-                    [(ngModel)]="theatre.phoneno"
-                    type="number"
-                    matInput
-                    name="phoneno"
-                    palceholder="Enter phone no">
-                </mat-form-field>
+                
 
 
-                <div class="container text-center">
+                <div class="container loc">
                     <button type="submit" mat-raised-button color="accent">Add Theatre</button>
                 </div>
 

@@ -32,5 +32,9 @@ export class MovieService {
 
   }
 
+  public getNowPlayingAndUpComing(){
+    return this._httpClient.get(`${baseUrl}/movieshows/now-playing-up-coming`);
+  }
+
 }
 

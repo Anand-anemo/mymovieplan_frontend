@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Theatre } from '../Models/Theatre.model';
 import baseUrl from './helper';
+import { Shows } from '../Models/Shows.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class TheatreService {
 
   public getTheatreById(tid:any){
     return this.httpClient.get(`${baseUrl}/theatre/${tid}`);
+  }
+
+  public findAllShows(tid:any){
+    return this.httpClient.get<Shows[]>(`${baseUrl}/theatre/${tid}/show/all`);
   }
 
 

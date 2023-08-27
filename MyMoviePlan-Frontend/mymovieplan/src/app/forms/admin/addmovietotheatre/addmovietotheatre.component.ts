@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup ,FormBuilder, FormControl, Validators, FormArray} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Movies } from 'src/app/Models/Movie.model';
 import { Theatre } from 'src/app/Models/Theatre.model';
+import { GlobalService } from 'src/app/services/GlobalService/global.service';
+import { constant } from 'src/app/services/helper';
 import { MovieService } from 'src/app/services/movie.service';
 import { TheatreService } from 'src/app/services/theatre.service';
 
@@ -12,80 +16,73 @@ import { TheatreService } from 'src/app/services/theatre.service';
 })
 export class AddmovietotheatreComponent implements OnInit{
 
-  movies:Movies[]=[];
-  theatre:Theatre[]=[];
-  selectedTheatreid: number[] = [];
-  mid:number=0;
-  constructor(private _movieService:MovieService,
+  auditoriumForm!: FormGroup;
+  showNames=constant.SHOW_NAMES;
+  allTheatresNames!: string[];
+  constructor(private _fb: FormBuilder,
     private _theatreService:TheatreService,
-    private _snackbar:MatSnackBar){
+    private _globalService:GlobalService,
+    private _router: Router
+    ){
 
   }
 
   ngOnInit(): void {
 
-    this._movieService.getmovies().subscribe({
-      next:(res:any)=>{
-        console.log(res);
-        this.movies=res;
+    this._globalService.getTheatresNames()
+    .subscribe(halls => this.allTheatresNames = halls);
 
-      },
-      error:(err)=>
-      {
-        console.log("error in getting movies");
-      }
-    });
+    this.auditoriumForm = this._fb.group({
+      theatreName: new FormControl('', [
+        Validators.required
+      ]),
+      address: new FormControl(''),
+      location: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      phoneno: new FormControl('', Validators.required),
+      seatCapacity: new FormControl(100, Validators.required),
+     
+      shows: new FormArray([])
+    })
 
-    this._theatreService.getTheatre().subscribe({
-      next:(res)=>{
-        console.log(res);
-        this.theatre=res
-      },
-      error:(err)=>{
-        console.log("error in getting movies");
-      }
-    });
-    
-    this.selectedTheatreid=new Array<number>();
+
+   
   }
 
-  getTheatreId(e:any , id:number){
-
-      if(e.target.checked){
-        console.log(id);
-  
-        this.selectedTheatreid.push(id);
-  
-      }
-      else{
-        console.log(id + 'unchecked');
-        this.selectedTheatreid=this.selectedTheatreid.filter(m=>m!=id);
-  
-      }
-      console.log(this.selectedTheatreid);
+  get shows(): FormArray {
+    return this.auditoriumForm.get('shows') as FormArray;
   }
-addmovietotheatre(mid:number){
 
-    for (let i = 0; i <= this.selectedTheatreid.length; i++) {
+  addShow(): void {
+    // if (this.shows.status == 'INVALID') {
+    //   this._alertService.defaultAlert('Please complete the above fields');
+    //   return;
+    // }
 
-      this._movieService.assigntheatretomovie(mid, this.selectedTheatreid[i]).subscribe({
+    this.shows.push(new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      startTime: new FormControl('', [Validators.required])
+    }));
+  }
 
-        next: (res) => {
-          this._snackbar.open('Data added ', '', {
-            duration: 3000,
-          });
+  removeShow(index: number): void {
+    if (confirm(`Do you want to remove the show: ${index + 1}`))
+      this.shows.removeAt(index);
+  }
 
+  onSubmit(): void {
+    this._theatreService.addtheatre(this.auditoriumForm.value)
+      .subscribe(
+        (res:any) => {
+          console.log(res)
+           this._globalService.addtheatre(res);
+          this._router.navigate(['/admin-dashboard/manage'], { queryParams: { 'auditorium-added': true } });
         },
-        error: (err) => {
-          this._snackbar.open('error', '', {
-            duration: 3000,
-          });
-        }
-      });
-    }
-
-  
-}
-  
+        // err => this._alertService.postionAlert(err.error.message, 'danger-alert')
+      );
+  }
 
 }
+
+ 
+

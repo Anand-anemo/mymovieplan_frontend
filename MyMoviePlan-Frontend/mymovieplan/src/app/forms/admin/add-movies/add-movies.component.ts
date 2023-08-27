@@ -32,7 +32,7 @@ export class AddMoviesComponent implements OnInit{
     },
     active: false,
     imageurl: '',
-    movieTheatre: []
+    
   }
   tid: any
   
@@ -128,9 +128,15 @@ export class AddMoviesComponent implements OnInit{
     this._movieService.addmovie(this.movies).subscribe({
       next:(res)=>{
         console.log(res);
+        this._snackbar.open('movie added','',{
+          duration:3000,
+        })
       },
       error:(err)=>{
         console.log("error");
+        this._snackbar.open('Error in adding data','',{
+          duration:3000,
+        })
       }
       
     });

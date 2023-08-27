@@ -16,11 +16,8 @@ export class AddTheatreComponent implements OnInit{
     location: '',
     city: '',
     phoneno: '',
-    ticket:[ {
-      ticketType: '',
-      ticketprice: 0,
-      ticketSeats: 0
-    }]
+    seatCapacity: 0,
+    shows: []
   }
  
   constructor(private snackbar:MatSnackBar,private _theatre:TheatreService){}
@@ -47,11 +44,8 @@ export class AddTheatreComponent implements OnInit{
             location: '',
             city: '',
             phoneno: '',
-            ticket: [{
-              ticketType: '',
-              ticketprice: 0,
-              ticketSeats: 0
-            }]
+            seatCapacity:0,
+            shows: []
           }
         },
         error:(err)=>{
