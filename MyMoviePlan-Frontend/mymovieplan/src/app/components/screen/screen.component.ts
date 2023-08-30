@@ -95,13 +95,13 @@ export class ScreenComponent implements OnInit{
         return false;
       seats.add(value);
       if (value.startsWith('J') || value.startsWith('I') || value.startsWith('H'))
-        this.totalAmount += 500
+        this.totalAmount += 500;
         //this.goldPrice$.value;
       else if (value.startsWith('A') || value.startsWith('B') || value.startsWith('C'))
-        this.totalAmount += 250;
+        this.totalAmount += 200;
         //this.generalPrice$.value;
       else
-        this.totalAmount += 300;
+        this.totalAmount += 300; 
        // this.silverPrice$.value;
       this.seatsToBeSelected--;
       return true;

@@ -131,6 +131,21 @@ export class AddMoviesComponent implements OnInit{
         this._snackbar.open('movie added','',{
           duration:3000,
         })
+        this.movies={
+          movieid: 0,
+          movieName: '',
+          language: '',
+          summary: '',
+          release: new Date,
+      
+          genres: {
+            gid: 0
+          },
+          active: false,
+          imageurl: '',
+          
+
+        }
       },
       error:(err)=>{
         console.log("error");

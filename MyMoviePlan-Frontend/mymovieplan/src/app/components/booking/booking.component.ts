@@ -77,8 +77,9 @@ export class BookingComponent implements OnInit {
     this.noOfTickets$.next(booking?.totalSeats!);
     this.selectedSeats$.next(booking?.seatNumbers!);
     this._globalService.getTheatre().subscribe(halls => {
-      const auditorium = halls.find(hall => hall.tid == booking?.bookingDetails.auditoriumId);
-      console.log(auditorium);
+      console.log(halls);
+      const auditorium = halls.find(hall => hall.tid == 1);
+      // const auditorium = halls.find(hall => hall.tid == booking?.bookingDetails.auditoriumId);
       this.auditoriumName$.next(auditorium?.theatreName!);
       const show = auditorium?.shows.find(show => show.showid == booking?.bookingDetails.showId);
       this.showName$.next(show?.name!);
@@ -86,7 +87,9 @@ export class BookingComponent implements OnInit {
     });
 
     this._globalService.getAllMovies().subscribe(movies => {
-      const movie = movies.find(movie => movie.movieid == booking?.bookingDetails.movieId);
+      console.log(movies);
+      // const movie = movies.find(movie => movie.movieid == booking?.bookingDetails.movieId);
+      const movie = movies.find(movie => movie.movieid == 9);
       this.movieImage$.next(movie?.imageurl!);
       this.movieLanguage$.next(movie?.language!);
       this.movieName$.next(movie?.movieName!);

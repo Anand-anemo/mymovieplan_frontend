@@ -39,21 +39,22 @@ const routes: Routes = [
 
     },
       {
-        path:'movies',component:MoviesComponent
+        path:'movies',component:MoviesComponent,canActivate:[UserGuard]
       },
       {
         path:'movie/:movieid',component:MovieComponent
       },
       {
-        path:'select-seats',component:ScreenComponent
+        path:'select-seats',component:ScreenComponent,canActivate:[UserGuard]
 
       },
       {
-        path:'payment',component:PaymentComponent
+        path:'payment',component:PaymentComponent,canActivate:[UserGuard]
       },
       {
-        path:'booking',component:BookingComponent
+        path:'booking',component:BookingComponent,canActivate:[UserGuard]
       }
+      
     ]
   },
   {
